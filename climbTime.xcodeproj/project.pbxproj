@@ -13,6 +13,9 @@
 		0A0749AC19CB5EBC00E24741 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0749AB19CB5EBC00E24741 /* Images.xcassets */; };
 		0A0749AF19CB5EBC00E24741 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0749AD19CB5EBC00E24741 /* LaunchScreen.xib */; };
 		0A0749BB19CB5EBC00E24741 /* climbTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0749BA19CB5EBC00E24741 /* climbTimeTests.swift */; };
+		0A0749C719CB663D00E24741 /* DayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0749C619CB663D00E24741 /* DayTableViewController.swift */; };
+		0A0749C919CB666200E24741 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0749C819CB666200E24741 /* DayTableViewCell.swift */; };
+		0A0749CE19CB8F0700E24741 /* thumb.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0A0749CD19CB8F0700E24741 /* thumb.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		0A0749B419CB5EBC00E24741 /* climbTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = climbTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0749B919CB5EBC00E24741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A0749BA19CB5EBC00E24741 /* climbTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = climbTimeTests.swift; sourceTree = "<group>"; };
+		0A0749C619CB663D00E24741 /* DayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTableViewController.swift; sourceTree = "<group>"; };
+		0A0749C819CB666200E24741 /* DayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		0A0749CD19CB8F0700E24741 /* thumb.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 			children = (
 				0A0749A419CB5EBC00E24741 /* AppDelegate.swift */,
 				0A0749A619CB5EBC00E24741 /* ViewController.swift */,
+				0A0749C619CB663D00E24741 /* DayTableViewController.swift */,
+				0A0749C819CB666200E24741 /* DayTableViewCell.swift */,
 				0A0749A819CB5EBC00E24741 /* Main.storyboard */,
 				0A0749AB19CB5EBC00E24741 /* Images.xcassets */,
 				0A0749AD19CB5EBC00E24741 /* LaunchScreen.xib */,
@@ -90,6 +98,7 @@
 		0A0749A219CB5EBC00E24741 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0A0749CD19CB8F0700E24741 /* thumb.jpeg */,
 				0A0749A319CB5EBC00E24741 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -161,6 +170,7 @@
 				TargetAttributes = {
 					0A07499E19CB5EBC00E24741 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = S3Z6TBVCH4;
 					};
 					0A0749B319CB5EBC00E24741 = {
 						CreatedOnToolsVersion = 6.0;
@@ -194,6 +204,7 @@
 			files = (
 				0A0749AA19CB5EBC00E24741 /* Main.storyboard in Resources */,
 				0A0749AF19CB5EBC00E24741 /* LaunchScreen.xib in Resources */,
+				0A0749CE19CB8F0700E24741 /* thumb.jpeg in Resources */,
 				0A0749AC19CB5EBC00E24741 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +225,8 @@
 			files = (
 				0A0749A719CB5EBC00E24741 /* ViewController.swift in Sources */,
 				0A0749A519CB5EBC00E24741 /* AppDelegate.swift in Sources */,
+				0A0749C919CB666200E24741 /* DayTableViewCell.swift in Sources */,
+				0A0749C719CB663D00E24741 /* DayTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +349,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = climbTime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -346,9 +362,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = climbTime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
