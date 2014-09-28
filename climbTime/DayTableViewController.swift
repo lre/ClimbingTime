@@ -8,12 +8,26 @@
 
 import UIKit
 
-class DayTableViewController: UITableViewController {
+class DayTableViewController: UITableViewController, DatahandlerDelegate{
     
     let cellId = "daycell"
+    var selfie = ""
+    
+    @IBOutlet weak var activ: UIActivityIndicatorView!
+    var atendMap : [String : Array<String>] = ["" : [""]]
+    var myDates = NSMutableSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.hidden = true
+        self.activ.hidden = false
+        self.activ.startAnimating()
+        let dataHandler = Datahandler()
+        
+        dataHandler.delegate = self
+        dataHandler.getdata()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +37,21 @@ class DayTableViewController: UITableViewController {
         
         self.tableView.rowHeight = 75
         self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
+    }
+    
+    func loginRequired(){
+        
+    }
+    
+    func dataAvalible(atendMap : [String : Array<String>], mydata : NSMutableSet){
+        self.atendMap = atendMap
+        self.myDates = mydata
+        
+        self.activ.stopAnimating()
+        self.activ.hidden = true
+        
+        self.tableView.hidden = false
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,23 +75,23 @@ class DayTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as DayTableViewCell
         
+        cell.clear()
+        
         var nextDate = NSTimeInterval(86400 * indexPath.row)
         var date = NSDate().dateByAddingTimeInterval(nextDate)
         
-        var dateFormatter = NSDateFormatter()
+        cell.setDate(date)
         
-        //Day
-        dateFormatter.dateFormat = "EEE"
-        var dayString = dateFormatter.stringFromDate(date)
-        cell.Day.text = String(Array(dayString)[0]).uppercaseString + (dayString as NSString).substringWithRange(NSRange(location: 1,length: 2))
+        if let imageArray = self.atendMap[cell.dateID]{
+            for imageFileName in imageArray{
+                cell.addImage(UIImage(named: imageFileName))
+            }
+        }
         
-        //Date
-        dateFormatter.dateFormat = "MMM d."
-        var dateString : String = dateFormatter.stringFromDate(date)
-        cell.Date.text = dateString
-        
-        
-        
+        if self.myDates.containsObject(cell.dateID){
+            cell.signedUp = true
+            cell.addMyImage(UIImage(named: self.selfie))
+        }
         // Configure the cell...
         return cell
     }
@@ -84,11 +113,12 @@ class DayTableViewController: UITableViewController {
         var action : UITableViewRowAction
         
         if(!isSignedUp){
+            
             action = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Add Me",
                 handler:{
                     (action: UITableViewRowAction!, indexPath: NSIndexPath!)
-                    in (tableView.cellForRowAtIndexPath(indexPath) as DayTableViewCell).signUp()
-                    self.tableView.editing = false
+                    in (tableView.cellForRowAtIndexPath(indexPath) as DayTableViewCell).signUp( UIImage(named: self.selfie) )
+                    self.addMe(indexPath)
                     return
             })
             
@@ -100,7 +130,7 @@ class DayTableViewController: UITableViewController {
                 handler:{
                     (action: UITableViewRowAction!, indexPath: NSIndexPath!)
                     in (tableView.cellForRowAtIndexPath(indexPath) as DayTableViewCell).removeMe()
-                    self.tableView.editing = false
+                    self.removeMe(indexPath)
                     return
             })
             
@@ -108,6 +138,35 @@ class DayTableViewController: UITableViewController {
             
         }
         return [action]
+    }
+    
+    private func arrayRemovingObject<T : Equatable>(object: T, fromArray array: [T]) -> [T] {
+        var index = find(array, object)
+        
+        var a = array
+        if ((index) != nil){
+            a.removeAtIndex(index!)
+        }
+        
+        return a
+    }
+    
+    private func addMe (indexPath : NSIndexPath) {
+        //Get the date
+        var dateKey : String = (tableView.cellForRowAtIndexPath(indexPath) as DayTableViewCell).dateID
+        
+        self.myDates.addObject(dateKey)
+        
+        self.tableView.editing = false
+    }
+    
+    private func removeMe (indexPath : NSIndexPath) {
+        //Get the date
+        var dateKey : String = (tableView.cellForRowAtIndexPath(indexPath) as DayTableViewCell).dateID
+        
+        self.myDates.removeObject(dateKey)
+        
+        self.tableView.editing = false
     }
     
     // Override to support editing the table view.
@@ -118,31 +177,5 @@ class DayTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }
