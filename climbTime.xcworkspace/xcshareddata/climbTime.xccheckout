@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7B81134F-CE7B-4A54-8DAE-700D0598F7EA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>climbTime</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BC3A390A31126BAEA4B86476AED2BEC9595AEE36</key>
+		<string>https://github.com/lre/ClimbingTime.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>climbTime.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BC3A390A31126BAEA4B86476AED2BEC9595AEE36</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lre/ClimbingTime.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BC3A390A31126BAEA4B86476AED2BEC9595AEE36</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BC3A390A31126BAEA4B86476AED2BEC9595AEE36</string>
+			<key>IDESourceControlWCCName</key>
+			<string>climbTime</string>
+		</dict>
+	</array>
+</dict>
+</plist>
